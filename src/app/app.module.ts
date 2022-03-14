@@ -16,6 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,7 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     HeroSearchComponent
   ],
   imports: [
-    BrowserModule, FormsModule, BrowserAnimationsModule, MatSliderModule, MatCheckboxModule, ReactiveFormsModule, AppRoutingModule, HttpClientModule, HttpClientModule,
+    BrowserModule, FormsModule, BrowserAnimationsModule, MatSliderModule, MatCheckboxModule, MatInputModule,MatButtonModule, ReactiveFormsModule, AppRoutingModule, HttpClientModule, HttpClientModule,
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.

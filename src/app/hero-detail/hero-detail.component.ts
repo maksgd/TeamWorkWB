@@ -20,8 +20,8 @@ import { HeroService } from '../hero.service';
       
     </div>
 
-    <button type="button" (click)="goBack()">go back</button>
-    <button type="button" (click)="save()">save</button>
+    <button mat-flat-button color="warn" type="button" (click)="goBack()">go back</button>
+    <button mat-flat-button color="accent" type="button" (click)="save()">save</button>
 
   <!-- /Hero Detail -->
   `,

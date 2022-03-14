@@ -9,12 +9,20 @@ import {
 import { IHero } from '../hero';
 import { HeroService } from '../hero.service';
 
+
+
 @Component({
   selector: 'app-hero-search',
   template: `
+    <!--  -->
+
+
+    <!--  -->
     <div id="search-component">
-      <label for="search-box">Hero Search</label>
-      <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label for="search-box">Hero Search</mat-label>
+      <input matInput #searchBox id="search-box" (input)="search(searchBox.value)" />
+      </mat-form-field>
 
       <ul class="search-result">
         <li *ngFor="let hero of heroes$ | async" >
