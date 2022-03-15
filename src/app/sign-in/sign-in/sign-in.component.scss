@@ -223,6 +223,26 @@ $clText: #303940;
   color: #303940;
 }
 
+::-webkit-input-placeholder {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 19.3304px;
+  line-height: 26px;
+
+  color: #303940;
+}
+
+:-ms-input-placeholder {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 19.3304px;
+  line-height: 26px;
+
+  color: #303940;
+}
+
 .form__btn {
   display: flex;
   justify-content: center;
