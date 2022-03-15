@@ -30,7 +30,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     DashboardComponent,
     HeroSearchComponent,
     FenceCasePipe,
-    SignUpComponent
+    SignUpComponent,
   ],
   imports: [
     BrowserModule, FormsModule, BrowserAnimationsModule, MatSliderModule, MatCheckboxModule, MatInputModule,MatButtonModule, ReactiveFormsModule, AppRoutingModule, HttpClientModule, HttpClientModule,

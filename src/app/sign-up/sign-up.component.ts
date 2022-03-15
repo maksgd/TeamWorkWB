@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-sign-up',
   template: `
-      <div class="container">
+      <!-- <div class="container">
         <form class="form" action="">
           <div class="form__body">
 
@@ -36,7 +36,7 @@ all articles and videos.</span>
 
           </div>
         </form>
-      </div>
+      </div> -->
   `,
   styleUrls: ['./sign-up.component.scss']
 })
