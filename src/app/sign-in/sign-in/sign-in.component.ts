@@ -18,7 +18,7 @@ all articles and videos.</span>
 
         <div class="input__user">
           <label class="label__user" for="user">Username</label>
-          <input class="form__input" type="text" id="user">
+          <input class="form__input" type="text" id="user" placeholder="shambhavim1999">
           <span class="input__user__text">Must not contain any special character</span>
         </div>
 
