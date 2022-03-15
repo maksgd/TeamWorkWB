@@ -5,7 +5,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 @Component({
   selector: 'app-messages',
   template: `
-    <div *ngIf="messageService.messages.length">
+    <div class="messMarg" *ngIf="messageService.messages.length">
 
       <h2>Messages</h2>
         <button mat-flat-button color="primary" type="button" class="" (click)="messageService.clear()">Clear messages</button>

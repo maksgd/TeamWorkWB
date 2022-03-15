@@ -12,7 +12,7 @@ import { HeroService } from '../hero.service';
 
       <a *ngFor="let hero of heroes"
         routerLink="/detail/{{hero.id}}">
-        {{hero.name}}
+        {{hero.name | fenceCase}}
       </a>
 
     </div>

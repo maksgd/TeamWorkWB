@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Tout of Heroes';
+  isPlBetween = true;
 
   // Work 1
   // form = new FormGroup({

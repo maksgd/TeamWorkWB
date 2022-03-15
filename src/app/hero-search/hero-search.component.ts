@@ -22,7 +22,7 @@ import { HeroService } from '../hero.service';
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label for="search-box">Hero Search</mat-label>
       <input matInput #searchBox id="search-box" (input)="search(searchBox.value)" />
-      </mat-form-field>
+    </mat-form-field>
 
       <ul class="search-result">
         <li *ngFor="let hero of heroes$ | async" >

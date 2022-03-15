@@ -18,6 +18,8 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
+import { FenceCasePipe } from './fence-case.pipe';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {MatInputModule} from '@angular/material/input';
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    FenceCasePipe,
+    SignUpComponent
   ],
   imports: [
     BrowserModule, FormsModule, BrowserAnimationsModule, MatSliderModule, MatCheckboxModule, MatInputModule,MatButtonModule, ReactiveFormsModule, AppRoutingModule, HttpClientModule, HttpClientModule,

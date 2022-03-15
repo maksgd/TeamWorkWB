@@ -20,3 +20,12 @@ nav a.active {
   background-color: black;
 }
 
+.placeBetween {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.headTitle {
+  margin: 20px 0 0 10px;
+}

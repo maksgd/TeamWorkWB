@@ -7,29 +7,31 @@ import { MessageService } from '../message.service';
   selector: 'app-heroes',
   template: `
   <!-- Heroes -->
-  <h2>My Heroes</h2>
+  <div class="margin">
+    <h2>My Heroes</h2>
 
-  <div>
-    <label for="new-hero">Hero name: </label>
-    <input id="new-hero" #heroName />
+    <div class="margin">
+      <label for="new-hero">Hero name: </label>
+      <input id="new-hero" #heroName />
 
-    <!-- (click) passes input value to add() and then clears the input -->
-    <button type="button" class="add-button" (click)="add(heroName.value); heroName.value=''">
-      Add hero
-    </button>
+      <!-- (click) passes input value to add() and then clears the input -->
+      <button type="button" class="add-button" (click)="add(heroName.value); heroName.value=''">
+        Add hero
+      </button>
+    </div>
+
+    <ul class="heroes">
+      <li *ngFor="let hero of heroes">
+
+        <a routerLink="/detail/{{hero.id}}">
+          <span class="badge">{{hero.id}}</span>
+          <span class="name">{{hero.name | fenceCase}}</span>
+        </a>
+        <button type="button" class="delete" title="delete hero" (click)="delete(hero)">x</button>
+
+      </li>
+    </ul>
   </div>
-
-  <ul class="heroes">
-    <li *ngFor="let hero of heroes">
-
-      <a routerLink="/detail/{{hero.id}}">
-        <span class="badge">{{hero.id}}</span> {{hero.name}}
-      </a>
-      <button type="button" class="delete" title="delete hero" (click)="delete(hero)">x</button>
-
-    </li>
-  </ul>
-
   <!-- /Heroes -->
   `,
   styleUrls: ['./heroes.component.scss']
