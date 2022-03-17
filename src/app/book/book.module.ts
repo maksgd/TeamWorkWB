@@ -12,6 +12,8 @@ import { HeaderComponent } from './header/header.component';
 import { ListThreeComponent } from './list-three/list-three.component';
 import { ListFourComponent } from './list-four/list-four.component';
 import { ListFiveComponent } from './list-five/list-five.component';
+import {MatButtonModule} from '@angular/material/button';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 
 @NgModule({
@@ -22,14 +24,25 @@ import { ListFiveComponent } from './list-five/list-five.component';
     HeaderComponent,
     ListThreeComponent,
     ListFourComponent,
-    ListFiveComponent
+    ListFiveComponent,
+    PaginatorComponent
   ],
   imports: [
     CommonModule,
     BookRoutingModule,
     BrowserModule,
     RouterModule,
-    FormsModule
-  ]
+    FormsModule, MatButtonModule
+  ],
+  exports: [
+    ListOneComponent,
+    BookComponent,
+    ListTwoComponent,
+    HeaderComponent,
+    ListThreeComponent,
+    ListFourComponent,
+    ListFiveComponent,
+    PaginatorComponent
+  ],
 })
 export class BookModule { }

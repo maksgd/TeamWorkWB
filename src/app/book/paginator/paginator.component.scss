@@ -1,0 +1,20 @@
+.paginator {
+  text-align: center;
+  width: 100%;
+  background: #fff;
+  margin-bottom: 24px;
+}
+
+.paginator button {
+  margin: 0 2px;
+}
+
+.active {
+  background-color: #8f07cf;
+  color: white;
+}
+
+.notactive {
+  background-color: #9007cf00;
+  color: black;
+}

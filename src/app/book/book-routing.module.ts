@@ -8,16 +8,18 @@ import { ListThreeComponent } from './list-three/list-three.component';
 import { ListTwoComponent } from './list-two/list-two.component';
 
 const routes: Routes = [
-  { path: 'book', redirectTo: '/book', pathMatch: 'full' },
-  { path: 'list-one', component: ListOneComponent },
-  { path: 'list-two', component: ListTwoComponent },
-  { path: 'list-three', component: ListThreeComponent },
-  { path: 'list-four', component: ListFourComponent },
-  { path: 'list-five', component: ListFiveComponent },
+  { path: 'book', component: BookComponent, children: [
+    { path: '1', component: ListOneComponent },
+    { path: '2', component: ListTwoComponent },
+    { path: '3', component: ListThreeComponent },
+    { path: '4', component: ListFourComponent },
+    { path: '5', component: ListFiveComponent },
+  ]},
+  
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class BookRoutingModule { }

@@ -1,7 +1,6 @@
 .list {
   width: 100%;
   background: #fff;
-  height: 595px;
 }
 
 .container {
@@ -13,6 +12,7 @@
 
 .first__block {
   display: flex;
+  margin-bottom: 52px;
 }
 
 .fb__img {
@@ -76,7 +76,6 @@
 .more__info {
   display: flex;
   flex-direction: column;
-  margin-top: 24px;
 }
 
 .mi__title {
