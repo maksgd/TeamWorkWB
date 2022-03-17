@@ -1,0 +1,84 @@
+.list {
+  width: 100%;
+  background: #fff;
+  height: 595px;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 762px;
+}
+
+.first__block {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+}
+
+.fb__img {
+  background: #e2e2e2;
+  border-radius: 16px;
+  width: 370px;
+  height: 216px;
+
+  margin: 0 auto;
+  margin-top: 24px;
+}
+
+.img__block {
+  // margin: 0 auto;
+}
+
+.fb__text {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 24px;
+}
+
+.text__header {
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 16px;
+
+  display: flex;
+  align-items: flex-end;
+
+  color: #000000;
+}
+
+.text__inner__first {
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+
+  margin-bottom: 12px;
+
+  display: flex;
+  align-items: flex-end;
+
+  color: #000000;
+}
+
+.text__inner__second {
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  /* or 143% */
+
+  display: flex;
+  align-items: flex-end;
+
+  color: #000000;
+
+  margin-bottom: 52px;
+}

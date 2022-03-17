@@ -20,6 +20,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { FenceCasePipe } from './fence-case.pipe';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { RouterModule } from '@angular/router';
+import { BookModule } from './book/book.module';
+
 
 @NgModule({
   declarations: [
@@ -30,10 +33,11 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     DashboardComponent,
     HeroSearchComponent,
     FenceCasePipe,
-    SignUpComponent,
+    SignUpComponent
+
   ],
   imports: [
-    BrowserModule, FormsModule, BrowserAnimationsModule, MatSliderModule, MatCheckboxModule, MatInputModule,MatButtonModule, ReactiveFormsModule, AppRoutingModule, HttpClientModule, HttpClientModule,
+    BrowserModule, FormsModule, BrowserAnimationsModule, MatSliderModule, MatCheckboxModule, MatInputModule,MatButtonModule, ReactiveFormsModule, AppRoutingModule, HttpClientModule, HttpClientModule, BookModule,
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.

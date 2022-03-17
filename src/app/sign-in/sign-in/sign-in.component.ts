@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-sign-in',
   template: `
-  <div class="container">
+  <div class="container" #container (blur)="focusFunction()">
     <form class="form" action="">
       <div class="form__body">
 
@@ -42,9 +42,15 @@ styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
 
-constructor() { }
+  constructor() { }
 
-ngOnInit(): void {
-}
+  @ViewChild('container') container: any;
+
+  focusFunction(): void{
+    console.log('Вошел в зону!')
+  }
+
+  ngOnInit(): void {
+  }
 
 }
