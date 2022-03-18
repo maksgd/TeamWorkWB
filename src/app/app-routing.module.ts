@@ -7,11 +7,10 @@ import { SignInComponent } from './sign-in/sign-in/sign-in.component';
 import { BookComponent } from './book/book.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/book/1', pathMatch: 'full' },
   { path: 'heroes', component: HeroesComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'sign-in', component: SignInComponent },
-  { path: 'book', component: BookComponent },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'detail/:id', component: HeroDetailComponent },
 ];
 

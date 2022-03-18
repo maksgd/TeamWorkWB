@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
 
     <div class="container">
       <app-header></app-header>
-
       <router-outlet></router-outlet>
     
       <app-paginator></app-paginator>
