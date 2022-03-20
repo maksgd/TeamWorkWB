@@ -20,7 +20,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { FenceCasePipe } from './fence-case.pipe';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { RouterModule } from '@angular/router';
 import { BookModule } from './book/book.module';
 
 

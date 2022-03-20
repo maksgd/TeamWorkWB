@@ -4,14 +4,15 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { SignInComponent } from './sign-in/sign-in/sign-in.component';
-import { BookComponent } from './book/book.component';
+import { bookRoutes } from './book/book-routing.module';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/book/1', pathMatch: 'full' },
+  { path:'', redirectTo:'/dashboard', pathMatch:'full'},
   { path: 'heroes', component: HeroesComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'detail/:id', component: HeroDetailComponent },
+  { path:'book', children:[...bookRoutes] }
 ];
 
 @NgModule({

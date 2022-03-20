@@ -9,9 +9,7 @@ import { Component, OnInit } from '@angular/core';
         <div class="first__block">
 
           <div class="fb__img">
-            <div class="img__block">
-              <img class="img" src="./noimg.png" alt="">
-            </div>
+            <div class="img__block"></div>
           </div>
           <div class="fb__text">
 

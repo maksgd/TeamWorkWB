@@ -24,9 +24,7 @@ import { Component, OnInit } from '@angular/core';
 
           </div>
 
-          <div class="fb__img">
-            <img class="img" src="./noimg.png" alt="">
-          </div>
+          <div class="fb__img"></div>
         </div>
 
     </div>
