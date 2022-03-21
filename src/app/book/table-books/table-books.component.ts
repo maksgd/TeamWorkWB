@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import { BookElement } from './book';
+import { IBookElement } from './book';
 import { TableBooksService } from './table-books.service';
 
 @Component({
@@ -68,10 +68,10 @@ export class TableBooksComponent implements OnInit {
 
   constructor(private tableBooksService: TableBooksService) {}
 
-  dataBooks: BookElement[] = []
+  dataBooks: IBookElement[] = []
   columnsToDisplay: string[] = ['id', 'title', 'qtyRelease']
   description: string | null = null
-  expandedElement: BookElement | null | undefined
+  expandedElement: IBookElement | null | undefined
 
   getBooks(): void {
     this.tableBooksService.getBooks().subscribe(books => this.dataBooks = books)
@@ -81,7 +81,7 @@ export class TableBooksComponent implements OnInit {
     this.tableBooksService.getCarts().subscribe(cart => this.description = cart[row].description)
   }
 
-  bookRow(row: BookElement): void {
+  bookRow(row: IBookElement): void {
     this.getCarts(row.id - 1)
   }
 

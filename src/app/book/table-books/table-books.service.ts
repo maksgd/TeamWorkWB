@@ -2,14 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { MessageService } from '../../message.service';
-import{ BookElement } from './book'
+import{ IBookElement } from './book'
 
 @Injectable({
   providedIn: 'root'
 })
 export class TableBooksService {
   
-  constructor(private http: HttpClient, private messageService: MessageService) { }
+  constructor(
+    private http: HttpClient, 
+    private messageService: MessageService) { }
 
   private log(message: string) {
     this.messageService.add(`Table-books: ${message}`);
@@ -26,17 +28,17 @@ export class TableBooksService {
     };
   }
   
-  getBooks(): Observable<BookElement[]> {
-    return this.http.get<BookElement[]>(this.urlBook).pipe(
+  getBooks(): Observable<IBookElement[]> {
+    return this.http.get<IBookElement[]>(this.urlBook).pipe(
         tap(_ => this.log('fetched books')),
-        catchError(this.handleError<BookElement[]>('getBooks'))
+        catchError(this.handleError<IBookElement[]>('getBooks'))
     )
   }
 
-  getCarts(): Observable<BookElement[]> {
-    return this.http.get<BookElement[]>(this.urlCart).pipe(
+  getCarts(): Observable<IBookElement[]> {
+    return this.http.get<IBookElement[]>(this.urlCart).pipe(
         tap(_ => this.log('fetched carts')),
-        catchError(this.handleError<BookElement[]>('getCarts'))
+        catchError(this.handleError<IBookElement[]>('getCarts'))
     )
   }
 }
