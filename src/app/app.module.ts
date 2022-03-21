@@ -19,7 +19,6 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { FenceCasePipe } from './fence-case.pipe';
-import { SignUpComponent } from './sign-up/sign-up.component';
 import { BookModule } from './book/book.module';
 
 
@@ -31,16 +30,12 @@ import { BookModule } from './book/book.module';
     MessagesComponent,
     DashboardComponent,
     HeroSearchComponent,
-    FenceCasePipe,
-    SignUpComponent
+    FenceCasePipe
 
   ],
   imports: [
     BrowserModule, FormsModule, BrowserAnimationsModule, MatSliderModule, MatCheckboxModule, MatInputModule, MatButtonModule, ReactiveFormsModule, AppRoutingModule, HttpClientModule, HttpClientModule, BookModule,
 
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     )

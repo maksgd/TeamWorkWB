@@ -18,7 +18,7 @@ export const bookRoutes: Routes = [
     { path: '3', component: ListThreeComponent },
     { path: '4', component: ListFourComponent },
     { path: '5', component: ListFiveComponent },
-    { path: '6', component: TableBooksComponent }
+    { path: 'table-books', component: TableBooksComponent }
   ]},
   
 ];

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../message.service';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-messages',
