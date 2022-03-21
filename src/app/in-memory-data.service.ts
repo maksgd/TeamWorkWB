@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
-import { IBookElement, ICartElement } from './book/table-books/book';
+import { IDataBook, ICartElement } from './book/table-books/book';
 import { IHero } from './hero';
 
 @Injectable({
@@ -65,9 +65,7 @@ export class InMemoryDataService implements InMemoryDbService {
 
     const cartArr: Array<ICartElement> = dataBook.set1.data
 
-    const bookArr: Array<IBookElement> = dataBook.set2.data.map((book) => Object.assign(book, dataBook.set1.data.find((cart) => cart.id == book.id)))
-
-
+    const bookArr: Array<IDataBook> = dataBook.set2.data
 
     return {heroes, cartArr, bookArr};
   }

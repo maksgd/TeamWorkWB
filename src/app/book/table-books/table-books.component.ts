@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import { IBookElement } from './book';
+import { IBookElement, IDataBook, ICartElement } from './book';
 import { TableBooksService } from './table-books.service';
 
 @Component({
@@ -68,20 +68,37 @@ export class TableBooksComponent implements OnInit {
 
   constructor(private tableBooksService: TableBooksService) {}
 
+  cart$ = this.tableBooksService.getCarts()
+
   dataBooks: IBookElement[] = []
+  books: IBookElement[] = []
+  
   columnsToDisplay: string[] = ['id', 'title', 'qtyRelease']
   description: string | null = null
   expandedElement: IBookElement | null | undefined
 
+  
   getBooks(): void {
-    this.tableBooksService.getBooks().subscribe(books => this.dataBooks = books)
+    this.tableBooksService.getBooks()
+      .subscribe(book => {
+        this.books = book
+        this.addStreamBook()
+      })
+  }
+
+  addStreamBook(): void {
+    if (this.dataBooks.length) {
+      this.dataBooks.map(cart => Object.assign(cart, this.books.find((book: IDataBook) => book.id == cart.id)))
+    } else {
+      this.dataBooks = this.books
+    }
   }
 
   getCarts(row: number): void {
-    this.tableBooksService.getCarts().subscribe(cart => this.description = cart[row].description)
+    this.cart$.subscribe(cart => this.description = cart[row].description)
   }
 
-  bookRow(row: IBookElement): void {
+  bookRow(row: IDataBook): void {
     this.getCarts(row.id - 1)
   }
 

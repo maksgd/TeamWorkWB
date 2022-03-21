@@ -1,11 +1,3 @@
-export interface IBookElement {
-  id: number,
-  title: string,
-  qtyRelease: number,
-  releaseDate: string,
-  description: string
-}
-
 export interface ICartElement {
   id: number,
   title: string,
@@ -17,3 +9,5 @@ export interface IDataBook {
   releaseDate: string;
   qtyRelease: number;
 }
+
+export interface IBookElement extends ICartElement, IDataBook {}
