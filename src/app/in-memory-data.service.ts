@@ -24,7 +24,7 @@ export class InMemoryDataService implements InMemoryDbService {
 
     const cartArr: CartElement[] = dataBook.set1.data
 
-    const bookArr: BookElement[] = dataBook.set2.data.map((book: { id: any; }) => Object.assign(book, dataBook.set1.data.find((cart: { id: any; }) => cart.id == book.id)))
+    const bookArr: BookElement[] = dataBook.set2.data.map((book) => Object.assign(book, dataBook.set1.data.find((cart) => cart.id == book.id)))
 
 
 
