@@ -7,7 +7,7 @@ import { HeroService } from '../hero.service';
   template: `
   <!-- Heroes -->
   <div class="margin">
-    <h2>My Heroes</h2>
+    <h2 appTextModificatorHost>My Heroes</h2>
 
     <div class="margin">
       <label for="new-hero">Hero name: </label>

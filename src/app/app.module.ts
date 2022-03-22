@@ -20,6 +20,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { FenceCasePipe } from './fence-case.pipe';
 import { BookModule } from './book/book.module';
+import { DirectiveDirective } from './directives/directive.directive';
+import { TextModificatorDirective } from './directives/text-modificator.directive';
+import { RainbowTextDirective } from './directives/rainbow-text.directive';
+import { TextModificatorHostDirective } from './directives/text-modificator-host.directive';
 
 
 @NgModule({
@@ -30,7 +34,11 @@ import { BookModule } from './book/book.module';
     MessagesComponent,
     DashboardComponent,
     HeroSearchComponent,
-    FenceCasePipe
+    FenceCasePipe,
+    DirectiveDirective,
+    TextModificatorDirective,
+    RainbowTextDirective,
+    TextModificatorHostDirective
 
   ],
   imports: [
