@@ -121,7 +121,7 @@ export class FormComponentComponent implements OnInit {
 
     if (index >= 0) {
       this.skills.splice(index, 1);
-      this.aliases.removeAt(index);
+      this.aliases.removeAt(index-3);
     }
   }
   // ===== /Chips
