@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector: '[appTextModificator]'
@@ -7,12 +7,15 @@ export class TextModificatorDirective {
 
   constructor(private el:ElementRef) {}
 
+  @Input() BgColor = 'purple'
+  @Input() TextStart = '. Happy Бездей!'
+
   textInit: string = ''
 
 
   @HostListener('mouseenter') onMouseEnter() {
     this.textInit = this.el.nativeElement.innerHTML
-    this.textmodificatorColor('#18cf07', this.textInit + '. Happy Бездей!');
+    this.textmodificatorColor(this.BgColor, this.textInit + this.TextStart);
   }
 
   @HostListener('mouseleave') onMouseLeave() {

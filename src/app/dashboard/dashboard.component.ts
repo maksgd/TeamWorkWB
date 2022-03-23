@@ -7,7 +7,7 @@ import { HeroService } from '../hero.service';
   template: `
   <!-- Dashboard -->
 
-    <h2 appRainbowText>Top Heroes</h2>
+    <h2 appRainbowText>Top Heroes: это лучшие герои, правда Вы о них никогда не слышали</h2>
     <div class="heroes-menu">
 
       <a *ngFor="let hero of heroes"
