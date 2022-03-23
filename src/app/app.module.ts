@@ -24,6 +24,11 @@ import { DirectiveDirective } from './directives/directive.directive';
 import { TextModificatorDirective } from './directives/text-modificator.directive';
 import { RainbowTextDirective } from './directives/rainbow-text.directive';
 import { TextModificatorHostDirective } from './directives/text-modificator-host.directive';
+import { FormComponentComponent } from './form-component/form-component.component';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
+
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 @NgModule({
@@ -38,11 +43,12 @@ import { TextModificatorHostDirective } from './directives/text-modificator-host
     DirectiveDirective,
     TextModificatorDirective,
     RainbowTextDirective,
-    TextModificatorHostDirective
+    TextModificatorHostDirective,
+    FormComponentComponent
 
   ],
   imports: [
-    BrowserModule, FormsModule, BrowserAnimationsModule, MatSliderModule, MatCheckboxModule, MatInputModule, MatButtonModule, ReactiveFormsModule, AppRoutingModule, HttpClientModule, HttpClientModule, BookModule,
+    BrowserModule, FormsModule, BrowserAnimationsModule, MatSliderModule, MatCheckboxModule, MatInputModule, MatButtonModule, ReactiveFormsModule, AppRoutingModule, HttpClientModule, HttpClientModule, BookModule, ReactiveFormsModule, MatChipsModule, MatIconModule, MatNativeDateModule,
 
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
