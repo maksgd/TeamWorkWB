@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 
-import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormArray, FormGroup, Validators, FormControl } from '@angular/forms';
 
 export interface ISkills {
   name: string;
@@ -45,12 +45,14 @@ export interface ISkills {
         <mat-form-field formArrayName="aliases" class="example-chip-list" appearance="fill">
           <mat-label>Умения</mat-label>
           <mat-chip-list #chipList aria-label="skill selection">
-            <mat-chip *ngFor="let skill of aliases.controls" (removed)="remove(skill)">
-              {{skill.value}}
+
+            <mat-chip *ngFor="let skill of aliases.value; let inDEX=index" (removed)="remove(inDEX)">
+              {{skill}}
               <button matChipRemove>
                 <mat-icon>cancel</mat-icon>
               </button>
             </mat-chip>
+
             <input placeholder="Больше умений..."
                   [matChipInputFor]="chipList"
                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
@@ -83,8 +85,9 @@ export class FormComponentComponent implements OnInit {
 
   formAllInfo: FormGroup
 
-  constructor(private fb: FormBuilder) {
+  readonly percs: string[] = ['жизнерадостность', 'заинтересованность', 'интеллект'];
 
+  constructor(private fb: FormBuilder) {
     this.formAllInfo = this.fb.group({
       lastName: ['', [Validators.required, Validators.pattern(/[А-я]/)]],
       firstName: ['', [Validators.required, Validators.pattern(/[А-я]/)]],
@@ -108,19 +111,16 @@ export class FormComponentComponent implements OnInit {
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
   add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
+    const value = (event.value);
 
-    if (value) {
-      console.log(this.aliases.controls);
-      this.aliases.push(this.fb.control(`${event.value}`))
+    if (value && !this.aliases.value.includes(value)) {
+      this.aliases.push(this.fb.control(value))
     }
 
     event.chipInput!.clear();
   }
 
-  remove(skill: any): void {
-    const index = this.aliases.controls.indexOf(skill);
-
+  remove(index: any): void {
     if (index >= 0) {
       this.aliases.removeAt(index);
     }
@@ -131,7 +131,6 @@ export class FormComponentComponent implements OnInit {
 
   isControlInvalid(controlName: string): boolean {
     const control = this.formAllInfo.controls[controlName];
-
     const result = control.invalid && control.touched;
 
     return result;
@@ -143,7 +142,11 @@ export class FormComponentComponent implements OnInit {
 
   onClear() {
     this.displayInfo = false
+
     this.formAllInfo.reset()
+    this.aliases.controls.splice(3);
+    this.aliases.patchValue(this.percs);
+
   }
 
 }
