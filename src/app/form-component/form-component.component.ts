@@ -45,8 +45,8 @@ export interface ISkills {
         <mat-form-field formArrayName="aliases" class="example-chip-list" appearance="fill">
           <mat-label>Умения</mat-label>
           <mat-chip-list #chipList aria-label="skill selection">
-            <mat-chip *ngFor="let skill of skills" (removed)="remove(skill)">
-              {{skill.name}}
+            <mat-chip *ngFor="let skill of aliases.controls" (removed)="remove(skill)">
+              {{skill.value}}
               <button matChipRemove>
                 <mat-icon>cancel</mat-icon>
               </button>
@@ -66,7 +66,7 @@ export interface ISkills {
       </div>
 
       <div *ngIf="displayInfo" class="more__info">
-        {{ formAllInfo.value | json }} 
+        {{ formAllInfo.value | json }}
       </div>
 
     </div>
@@ -91,7 +91,11 @@ export class FormComponentComponent implements OnInit {
       middleName: ['', [Validators.pattern(/[А-я]/)]],
       email: ['', [Validators.email]],
   
-      aliases: this.fb.array([])
+      aliases: this.fb.array([
+        this.fb.control('жизнерадостность'),
+        this.fb.control('заинтересованность'),
+        this.fb.control('интеллект')
+      ])
     })
   }
 
@@ -102,26 +106,23 @@ export class FormComponentComponent implements OnInit {
   // ===== Chips
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  skills: ISkills[] = [{name: 'жизнерадостность'}, {name: 'заинтересованность'}, {name: 'интеллект'}];
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
-    // Add our skill
+
     if (value) {
+      console.log(this.aliases.controls);
       this.aliases.push(this.fb.control(`${event.value}`))
-      this.skills.push({name: value});
     }
 
-    // Clear the input value
     event.chipInput!.clear();
   }
 
-  remove(skill: ISkills): void {
-    const index = this.skills.indexOf(skill);
+  remove(skill: any): void {
+    const index = this.aliases.controls.indexOf(skill);
 
     if (index >= 0) {
-      this.skills.splice(index, 1);
-      this.aliases.removeAt(index-3);
+      this.aliases.removeAt(index);
     }
   }
   // ===== /Chips
