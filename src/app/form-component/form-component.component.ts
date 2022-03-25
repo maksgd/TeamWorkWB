@@ -94,11 +94,7 @@ export class FormComponentComponent implements OnInit {
       middleName: ['', [Validators.pattern(/[А-я]/)]],
       email: ['', [Validators.email]],
   
-      aliases: this.fb.array([
-        this.fb.control('жизнерадостность'),
-        this.fb.control('заинтересованность'),
-        this.fb.control('интеллект')
-      ])
+      aliases: this.fb.array(this.percs.map(el => this.fb.control(el)))
     })
   }
 
