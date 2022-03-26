@@ -83,7 +83,8 @@ export class TableBooksComponent implements OnInit {
       .subscribe(book => {
         this.books = book
         this.addStreamBook()
-      })
+      }
+    )
   }
 
   addStreamBook(): void {
