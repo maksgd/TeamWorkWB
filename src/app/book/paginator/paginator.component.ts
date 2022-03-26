@@ -20,9 +20,10 @@ import { Component, OnInit } from '@angular/core';
         <button mat-mini-fab routerLink="/book/5" [class]="onActive(5)">
           5
         </button>
-        <button style="margin-left: 30px" mat-mini-fab routerLink="/book/table-books" [class]="onActive(6)">
+        <button mat-mini-fab style="margin-left: 30px"  routerLink="/book/table-books" [class]="onActive(6)">
           table
         </button>
+        <app-chart-books></app-chart-books>
       </div>
     </div>
   `,
@@ -32,20 +33,20 @@ export class PaginatorComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
   onActive(page: number): string {
     let url = window.location.href
     let curPage: string = ''
   
     if ((url.slice(url.length - 11)) === 'table-books') {
-      curPage = 6 == page ? 'active' : 'notactive'  
+      curPage = 6 == page ? 'active' : 'notactive'
     } else {
       curPage = Number(url.slice(url.length - 1)) == page ? 'active' : 'notactive'
     }
 
     return curPage
+  }
+
+  ngOnInit(): void {
   }
 
 }

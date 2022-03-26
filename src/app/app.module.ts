@@ -24,7 +24,7 @@ import { DirectiveDirective } from './directives/directive.directive';
 import { TextModificatorDirective } from './directives/text-modificator.directive';
 import { RainbowTextDirective } from './directives/rainbow-text.directive';
 import { TextModificatorHostDirective } from './directives/text-modificator-host.directive';
-import { FormComponentComponent } from './form-component/form-component.component';
+import { FormComponentComponent } from './form/form.component';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 

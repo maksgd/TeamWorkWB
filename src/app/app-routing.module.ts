@@ -5,7 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { SignInComponent } from './sign-in/sign-in/sign-in.component';
 import { bookRoutes } from './book/book-routing.module';
-import { FormComponentComponent } from './form-component/form-component.component';
+import { FormComponentComponent } from './form/form.component';
 
 const routes: Routes = [
   { path:'', redirectTo:'/dashboard', pathMatch:'full'},

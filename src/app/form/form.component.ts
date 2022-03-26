@@ -76,7 +76,7 @@ export interface ISkills {
   <!-- /Form -->
   `,
 
-  styleUrls: ['./form-component.component.scss']
+  styleUrls: ['./form.component.scss']
 })
 
 export class FormComponentComponent implements OnInit {
