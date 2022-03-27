@@ -32,14 +32,15 @@ export class TableBooksService {
   // SET 1
   getCarts(): Observable<ICartElement[]> {
     return this.http.get<ICartElement[]>(this.urlCart).pipe(
-        tap(_ => this.log('fetched carts')),
+        tap(_ => this.log('fetched set1')),
         catchError(this.handleError<ICartElement[]>('get SET-1'))
     )
   }
 
+  // SET 2
   getDataBook(): Observable<IDataBook[]> {
     return this.http.get<IDataBook[]>(this.urlBook).pipe(
-        tap(_ => this.log('fetched carts')),
+        tap(_ => this.log('fetched set2')),
         catchError(this.handleError<IDataBook[]>('get SET-2'))
     )
   }

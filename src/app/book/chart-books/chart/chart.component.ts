@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
-import { bookRoutes } from '../../book-routing.module';
 import { IDataBook } from '../../table-books/book';
 import { TableBooksService } from '../../table-books/table-books.service';
 
@@ -25,7 +24,7 @@ Chart.register(...registerables);
   `,
   styleUrls: ['./chart.component.scss'],
 })
-export class ChartComponent implements OnInit, AfterViewInit {
+export class ChartComponent implements OnInit, AfterContentChecked {
   constructor(private tableBooksService: TableBooksService) {}
 
   set2$ = this.tableBooksService.getDataBook();
@@ -33,7 +32,9 @@ export class ChartComponent implements OnInit, AfterViewInit {
   date: string[] = [];
   qtyRelease: number[] = [];
 
-  ngOnInit(): void {
+  chartBook!: Chart 
+
+  getDataToChart(): void {
     this.set2$.subscribe((books: IDataBook[]) => {
       books.forEach((item) => {
         this.date.push(item.releaseDate);
@@ -42,8 +43,8 @@ export class ChartComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    new Chart('chartBooks', {
+  createChart(): void {
+    this.chartBook = new Chart('chartBooks', {
       type: 'bar',
       data: {
         labels: this.date,
@@ -79,5 +80,14 @@ export class ChartComponent implements OnInit, AfterViewInit {
         },
       },
     });
+  }
+
+  ngOnInit(): void {
+    this.getDataToChart()
+    this.createChart()
+  }
+
+  ngAfterContentChecked(): void {
+    this.chartBook.update()
   }
 }

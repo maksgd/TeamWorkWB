@@ -23,7 +23,9 @@ import { Component, OnInit } from '@angular/core';
         <button mat-mini-fab style="margin-left: 30px"  routerLink="/book/table-books" [class]="onActive(6)">
           table
         </button>
+
         <app-chart-books></app-chart-books>
+        
       </div>
     </div>
   `,
