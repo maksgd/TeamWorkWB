@@ -1,7 +1,7 @@
 import { AfterContentChecked, AfterViewInit, Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { IDataBook } from '../../table-books/book';
-import { TableBooksService } from '../../table-books/table-books.service';
+import { ChartInfoService } from '../chart-info.service';
 
 Chart.register(...registerables);
 
@@ -24,34 +24,24 @@ Chart.register(...registerables);
   `,
   styleUrls: ['./chart.component.scss'],
 })
-export class ChartComponent implements OnInit, AfterContentChecked {
-  constructor(private tableBooksService: TableBooksService) {}
 
-  set2$ = this.tableBooksService.getDataBook();
+export class ChartComponent implements OnInit {
+  constructor(private chartInfo: ChartInfoService) {}
 
-  date: string[] = [];
-  qtyRelease: number[] = [];
+  dataInfoFromTable = this.chartInfo.getData();
 
-  chartBook!: Chart 
-
-  getDataToChart(): void {
-    this.set2$.subscribe((books: IDataBook[]) => {
-      books.forEach((item) => {
-        this.date.push(item.releaseDate);
-        this.qtyRelease.push(item.qtyRelease);
-      });
-    });
-  }
+  labelsChart: Array<string> = this.dataInfoFromTable.map((book) => book.releaseDate)
+  dataChart: Array<number> = this.dataInfoFromTable.map((book) => book.qtyRelease)
 
   createChart(): void {
-    this.chartBook = new Chart('chartBooks', {
+    new Chart('chartBooks', {
       type: 'bar',
       data: {
-        labels: this.date,
+        labels: this.labelsChart,
         datasets: [
           {
             label: 'Продано книг',
-            data: this.qtyRelease,
+            data: this.dataChart,
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -83,11 +73,7 @@ export class ChartComponent implements OnInit, AfterContentChecked {
   }
 
   ngOnInit(): void {
-    this.getDataToChart()
     this.createChart()
   }
 
-  ngAfterContentChecked(): void {
-    this.chartBook.update()
-  }
 }
