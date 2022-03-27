@@ -24,7 +24,7 @@ import { Component, OnInit } from '@angular/core';
           table
         </button>
 
-        <app-chart-books></app-chart-books>
+        <app-chart-books *ngIf="isTable"></app-chart-books>
         
       </div>
     </div>
@@ -33,16 +33,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaginatorComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
+
+  isTable:boolean = false
 
   onActive(page: number): string {
     let url = window.location.href
     let curPage: string = ''
   
     if ((url.slice(url.length - 11)) === 'table-books') {
-      curPage = 6 == page ? 'active' : 'notactive'
+      curPage = 6 == page ? 'active' : 'notactive',
+      this.isTable = true
     } else {
-      curPage = Number(url.slice(url.length - 1)) == page ? 'active' : 'notactive'
+      curPage = Number(url.slice(url.length - 1)) == page ? 'active' : 'notactive',
+      this.isTable = false
     }
 
     return curPage
