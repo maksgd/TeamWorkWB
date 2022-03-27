@@ -1,9 +1,7 @@
-import { AfterContentChecked, AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
-import { IDataBook } from '../../table-books/book';
 import { ChartInfoService } from '../chart-info.service';
 
-Chart.register(...registerables);
 
 @Component({
   selector: 'app-chart',
@@ -26,7 +24,9 @@ Chart.register(...registerables);
 })
 
 export class ChartComponent implements OnInit {
-  constructor(private chartInfo: ChartInfoService) {}
+  constructor(private chartInfo: ChartInfoService) {
+    if (registerables) Chart.register(...registerables);
+  }
 
   dataInfoFromTable = this.chartInfo.getData();
 
