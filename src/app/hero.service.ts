@@ -17,8 +17,6 @@ export class HeroService {
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
   }
-    
-  private heroesUrl = 'api/heroes';  // URL to web api
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -32,9 +30,19 @@ export class HeroService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
+  private heroesUrl = 'http://localhost:4200/api';  // URL to web api
+
+  getHttpHeroes() {
+    const temp = this.http.get<IHero[]>(`${this.heroesUrl}/heros.json`, {headers: {"Get": "Heroes"}})
+
+    return temp.pipe(map((data:any) => {
+      return data.heroes
+    }))
+  }
+
   /** GET heroes from the server */
   getHeroes(): Observable<IHero[]> {
-    return this.http.get<IHero[]>(this.heroesUrl)
+    return this.getHttpHeroes()
       .pipe(
         tap(_ => this.log('fetched heroes')),
         catchError(this.handleError<IHero[]>('getHeroes', []))
