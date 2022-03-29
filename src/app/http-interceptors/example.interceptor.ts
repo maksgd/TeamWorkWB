@@ -7,28 +7,33 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { catchError, Observable, tap, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class ExampleInterceptor implements HttpInterceptor {
-  constructor() {}
+  private base64 = btoa('HelloWb:admin')
+  constructor(private router: Router) {}
 
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     
-    const newHeader = request.clone({
-      headers: request.headers.set('X-header', 'newHeaderElem'),
-    });
+    // const newHeader = request.clone({
+    //   headers: request.headers.set('Authorization', 'newHeaderElem'),
+    // });
 
-    // const addHeaderOp = request.clone({ setHeaders: {'X-header': 'newHeaderElem'} });
+    const addHeader = request.clone({ setHeaders: { Authorization: `${this.base64}`} });
 
-    return next.handle(newHeader)
+    return next.handle(addHeader)
       .pipe(
         tap(() => {
-          console.log(newHeader);
+          console.log(addHeader);
         }),
         catchError( (error: HttpErrorResponse) => {
+          if (error.status === 401) {
+            this.router.navigate(['sign-in'])
+          }
             console.log('Interceptor Error: ', error)
             return throwError(error);
         })
