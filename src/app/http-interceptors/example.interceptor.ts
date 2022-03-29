@@ -11,32 +11,32 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class ExampleInterceptor implements HttpInterceptor {
-  private base64 = btoa('HelloWb:admin')
+  private base64 = btoa('HelloWb:admin');
   constructor(private router: Router) {}
 
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    
     // const newHeader = request.clone({
     //   headers: request.headers.set('Authorization', 'newHeaderElem'),
     // });
 
-    const addHeader = request.clone({ setHeaders: { Authorization: `${this.base64}`} });
+    const addHeader = request.clone({
+      setHeaders: { Authorization: `Basic ${this.base64}` },
+    });
 
-    return next.handle(addHeader)
-      .pipe(
-        tap(() => {
-          console.log(addHeader);
-        }),
-        catchError( (error: HttpErrorResponse) => {
-          if (error.status === 401) {
-            this.router.navigate(['sign-in'])
-          }
-            console.log('Interceptor Error: ', error)
-            return throwError(error);
-        })
-      )
+    return next.handle(addHeader).pipe(
+      tap(() => {
+        console.log(addHeader);
+      }),
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          this.router.navigate(['sign-in']);
+        }
+        console.log('Interceptor Error: ', error);
+        return throwError(error);
+      })
+    );
   }
 }
