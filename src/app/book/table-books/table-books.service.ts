@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, concat, map, Observable, of, tap } from 'rxjs';
-import { MessageService } from '../../message.service';
 import { IBookElement, ICartElement, IDataBook } from './book';
 
 @Injectable({
@@ -10,12 +9,7 @@ import { IBookElement, ICartElement, IDataBook } from './book';
 export class TableBooksService {
   constructor(
     private http: HttpClient,
-    private messageService: MessageService
   ) {}
-
-  private log(message: string) {
-    this.messageService.add(`Table-books: ${message}`);
-  }
 
   urlBook: string = 'http://localhost:4200/api';
 
@@ -55,7 +49,6 @@ export class TableBooksService {
       this.getHttpCarts(),
       this.getHttpDataBook()
     ).pipe(
-      tap((_) => this.log('fetched set data of books')),
       catchError(this.handleError<IBookElement[]>('getBooks', []))
     );
   }
@@ -63,7 +56,6 @@ export class TableBooksService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
-      this.log(`${operation} failed: ${error.message}`);
       return of(result as T);
     };
   }
