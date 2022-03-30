@@ -1,5 +1,7 @@
 # MyFirstApp
 
+Here goes the best teamwork project in the world!
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
 
 ## Development server
