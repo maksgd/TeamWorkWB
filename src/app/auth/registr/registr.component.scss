@@ -1,0 +1,61 @@
+.form {
+  margin-top: 20px;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+
+  padding: 0 15px;
+  max-width: 500px;
+
+  background: #424242;
+  border-radius: 10px;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.container-btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.example-chip-list {
+  width: 100%;
+}
+
+input {
+  color: #fff;
+}
+
+.btn {
+  min-width: 150px;
+  margin-bottom: 15px;
+}
+
+.btn__hasAcc {
+  width: 190px;
+  margin-bottom: 15px;
+  margin-left: 30px;
+}
+
+.more__info {
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.error {
+  font-size: 12px;
+  margin-top: 10px;
+  color: rgb(255, 255, 255);
+}
+
+.header {
+  margin-top: 20px;
+  color: #fff;
+}

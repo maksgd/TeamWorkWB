@@ -1,14 +1,11 @@
-<h1 appTextModificator [BgColor]="'green'" [TextStart]="'. Оллаааааа!'" class="headTitle">{{title}}</h1>
+<h1 class="headTitle">{{title}}</h1>
 <nav [ngClass]="{
   'placeBetween': isPlBetween
 }">
-  <a routerLink="/dashboard">Dashboard</a>
-  <a style="margin: 10px 10px 0 10px;" routerLink="/heroes">Heroes</a>
   <a routerLink="/sign-in">SignIn</a>
   <a style="margin: 10px 10px 0 10px;" routerLink="/book">Book</a>
   <a routerLink="/form">Form</a>
+  <button class="btn-logout" mat-stroked-button (click)="logout()">Logout</button>
 </nav>
 
 <router-outlet></router-outlet>
-
-<app-messages></app-messages>

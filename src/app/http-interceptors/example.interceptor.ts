@@ -32,7 +32,7 @@ export class ExampleInterceptor implements HttpInterceptor {
       }),
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
-          this.router.navigate(['sign-in']);
+          this.router.navigate(['login']);
         }
         console.log('Interceptor Error: ', error);
         return throwError(error);
