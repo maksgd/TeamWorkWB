@@ -38,7 +38,7 @@ export class AuthService {
   }
 
   refreshTokenIfNeeded() {
-    if (localStorage.getItem('user')) {
+    if (localStorage.getItem('user') && this.userData) {
       this.userData.getIdToken().then((res: string) => { console.log(res) });
       localStorage.setItem('user', this.userData);
       //this.SetUserData(this.userData.toJSON());
