@@ -20,11 +20,9 @@
   width: 80%;
 }
 
-.mt-30 {
-  margin-top: 30px;
-}
-.mr-30 {
-  margin-right: 30px;
+.container-btn {
+  display: flex;
+  justify-content: space-between;
 }
 
 .example-chip-list {
@@ -36,7 +34,7 @@ input {
 }
 
 .btn {
-  width: 150px;
+  min-width: 150px;
   margin-bottom: 15px;
 }
 
