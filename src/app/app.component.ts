@@ -11,15 +11,15 @@ import { AuthService } from './auth/services/auth.service';
 export class AppComponent implements OnInit {
   title = 'Tour of Heroes';
   isPlBetween = true;
-  
+
 
   constructor(private router: Router, public authService: AuthService) {}
-  
-  hasToken: boolean = this.authService.isAuthenticated()
 
+  //hasToken: boolean = this.authService.isAuthenticated()
 
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.refreshTokenIfNeeded();
+  }
 
   logout() {
     this.authService.SignOut()

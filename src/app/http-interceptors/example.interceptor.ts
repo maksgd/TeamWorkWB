@@ -21,7 +21,6 @@ export class ExampleInterceptor implements HttpInterceptor {
     // const newHeader = request.clone({
     //   headers: request.headers.set('Authorization', 'newHeaderElem'),
     // });
-    console.log('meow');
 
     const addHeader = request.clone({
       setHeaders: { Authorization: `Basic ${this.base64}` },

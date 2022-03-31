@@ -22,17 +22,24 @@ export class AuthService {
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
     public ngZone: NgZone // NgZone service to remove outside scope warning
-    ) {
+  ) {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
+        //Устанавливаем 2 часа, но не можем на Бэке.
+        this.userData.multiFactor.user.stsTokenManager.expirationTime += 3600000;
+        //
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user')!);
-        console.log(this.userData.getIdToken());
       } else {
         localStorage.removeItem('user');
       }
     });
+  }
+
+  refreshTokenIfNeeded() {
+    this.userData.getIdToken().then((res: string) => { console.log(res) });
+    localStorage.setItem('user', this.userData);
   }
 
   SignIn(email: string, password: string) {
