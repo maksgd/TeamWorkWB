@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { FenceCasePipe } from './fence-case.pipe';
+import { FenceCasePipe } from './pipes/fence-case.pipe';
 import { BookModule } from './book/book.module';
 import { DirectiveDirective } from './directives/directive.directive';
 import { TextModificatorDirective } from './directives/text-modificator.directive';
@@ -23,8 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import { httpInterceptorProviders } from './http-interceptors';
-import { AUTH_API_URL } from './app-injection-tokens';
-import { environment } from 'src/environments/environment';
+import { AuthModule } from './auth/auth.module';
 
 
 @NgModule({
@@ -39,17 +38,10 @@ import { environment } from 'src/environments/environment';
 
   ],
   imports: [
-    BrowserModule, FormsModule, BrowserAnimationsModule, MatSliderModule, MatCheckboxModule, MatInputModule, MatButtonModule, ReactiveFormsModule, AppRoutingModule, HttpClientModule, HttpClientModule, BookModule, ReactiveFormsModule, MatChipsModule, MatIconModule, MatNativeDateModule,
-    // JwtModule.forRoot({
-
-    // })
+    BrowserModule, FormsModule, BrowserAnimationsModule, MatSliderModule, MatCheckboxModule, MatInputModule, MatButtonModule, ReactiveFormsModule, AppRoutingModule, HttpClientModule, HttpClientModule, BookModule, MatChipsModule, MatIconModule, MatNativeDateModule, AuthModule
   ],
   providers: [
-    httpInterceptorProviders,
-    {
-      provide: AUTH_API_URL,
-      useValue: environment.authApi
-    }
+    httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })

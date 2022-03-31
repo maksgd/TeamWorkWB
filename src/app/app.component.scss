@@ -23,10 +23,18 @@ nav a.active {
 .placeBetween {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
 .headTitle {
   width: 500px;
   margin: 20px 0 0 10px;
+}
+
+.btn-logout {
+  margin-left: 40px;
+  margin-top: 10px;
+  color: white;
+  background-color: rgb(98, 102, 98);
 }

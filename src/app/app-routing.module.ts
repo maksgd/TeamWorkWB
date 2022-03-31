@@ -3,12 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignInComponent } from './sign-in/sign-in/sign-in.component';
 import { bookRoutes } from './book/book-routing.module';
 import { FormComponentComponent } from './form/form.component';
+import { authRoutes } from './auth/auth-routing.module';
+import { AuthGuardService } from './auth/auth-guard.service';
 
 const routes: Routes = [
-  { path:'', redirectTo:'/form', pathMatch:'full'},
-  { path: 'sign-in', component: SignInComponent },
-  { path: 'form', component: FormComponentComponent },
-  { path:'book', children:[...bookRoutes] }
+  { path:'', redirectTo:'/auth', pathMatch:'full'},
+  { path: 'sign-in', component: SignInComponent, canActivate: [AuthGuardService] },
+  { path: 'form', component: FormComponentComponent, canActivate: [AuthGuardService] },
+  { path:'book', children:[...bookRoutes], canActivate: [AuthGuardService] },
+  { path: 'auth', children:[...authRoutes], canActivate: [AuthGuardService] }
 ];
 
 @NgModule({

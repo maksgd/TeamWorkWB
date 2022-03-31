@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BookComponent } from './book.component';
-import { ChartBooksComponent } from './chart-books/chart-books.component';
 import { ListFiveComponent } from './list-five/list-five.component';
 import { ListFourComponent } from './list-four/list-four.component';
 import { ListOneComponent } from './list-one/list-one.component';
