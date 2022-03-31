@@ -38,19 +38,22 @@ export class AuthService {
   }
 
   refreshTokenIfNeeded() {
-    this.userData.getIdToken().then((res: string) => { console.log(res) });
-    localStorage.setItem('user', this.userData);
+    if (localStorage.getItem('user')) {
+      this.userData.getIdToken().then((res: string) => { console.log(res) });
+      localStorage.setItem('user', this.userData);
+      //this.SetUserData(this.userData.toJSON());
+    }
   }
 
   SignIn(email: string, password: string) {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['book']);
-          console.log(this.router.config);
-        });
         this.SetUserData(result.user);
+        this.ngZone.run(() => {
+          console.log('meow');
+          this.router.navigate(['book']);
+        });
       })
       .catch((error) => {
         window.alert(error.message);
