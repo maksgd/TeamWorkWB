@@ -25,6 +25,15 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { httpInterceptorProviders } from './http-interceptors';
 import { AuthModule } from './auth/auth.module';
 
+// Firebase
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { environment } from '../environments/environment';
+import { AuthService } from './auth/services/auth.service';
+
+
 
 @NgModule({
   declarations: [
@@ -38,10 +47,15 @@ import { AuthModule } from './auth/auth.module';
 
   ],
   imports: [
-    BrowserModule, FormsModule, BrowserAnimationsModule, MatSliderModule, MatCheckboxModule, MatInputModule, MatButtonModule, ReactiveFormsModule, AppRoutingModule, HttpClientModule, HttpClientModule, BookModule, MatChipsModule, MatIconModule, MatNativeDateModule, AuthModule
+    BrowserModule, FormsModule, BrowserAnimationsModule, MatSliderModule, MatCheckboxModule, MatInputModule, MatButtonModule, ReactiveFormsModule, AppRoutingModule, HttpClientModule, HttpClientModule, BookModule, MatChipsModule, MatIconModule, MatNativeDateModule, AuthModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'projectautorizationwb'),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
   ],
   providers: [
-    httpInterceptorProviders
+    httpInterceptorProviders,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

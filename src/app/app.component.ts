@@ -1,20 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './auth/services/auth.service';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-
-export class AppComponent {
-  title = 'Tout of Heroes';
+export class AppComponent implements OnInit {
+  title = 'Tour of Heroes';
   isPlBetween = true;
+  
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public authService: AuthService) {}
+  
+  hasToken: boolean = this.authService.isAuthenticated()
+
+
+
+  ngOnInit() {}
 
   logout() {
-    this.router.navigate(['auth'])
-    localStorage.removeItem('Token')
+    this.authService.SignOut()
   }
 }
