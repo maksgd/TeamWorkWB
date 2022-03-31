@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthComponent } from './auth/auth.component';
+import { AuthComponent } from './auth.component';
+import { LoginComponent } from './login/login.component';
+
 import { RegistrComponent } from './registr/registr.component';
 
 export const authRoutes: Routes = [
@@ -8,8 +10,8 @@ export const authRoutes: Routes = [
     path: '',
     component: AuthComponent,
     children: [
-      { path: '', redirectTo: '/auth', pathMatch: 'full' },
-      { path: 'auth', component: AuthComponent },
+      { path: '', redirectTo: '/login', pathMatch: 'full' },
+      { path: 'login', component: LoginComponent },
       { path: 'registr', component: RegistrComponent },
     ],
   },

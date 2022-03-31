@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-auth',
+  selector: 'app-login',
   template: `
     <!-- Form -->
   
@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
     <div class="container">
 
       <div class="example-container">
+
+        <h2 class="header">Авторизация</h2>
 
         <mat-form-field class="mt-30" appearance="fill">
           <mat-label>Email</mat-label>
@@ -28,7 +30,7 @@ import { Router } from '@angular/router';
 
         <div class="container-btn">
         <button class="btn mr-30" mat-raised-button color="primary" (click)="onAuth()" [disabled]="!formAllInfo.valid" >Войти</button>
-        <button class="btn" mat-raised-button color="warn" routerLink="/registr">Регистрация</button>
+        <button class="btn" mat-raised-button color="primary" routerLink="/registr">Регистрация</button>
         </div>
       </div>
 
@@ -36,9 +38,9 @@ import { Router } from '@angular/router';
   </form>
   <!-- /Form -->
   `,
-  styleUrls: ['./auth.component.scss'],
+  styleUrls: ['./login.component.scss'],
 })
-export class AuthComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   formAllInfo: FormGroup
 
@@ -48,7 +50,6 @@ export class AuthComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(5)]],
     })
   }
-
   
 
   onAuth() {
