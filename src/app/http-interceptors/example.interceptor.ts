@@ -21,6 +21,7 @@ export class ExampleInterceptor implements HttpInterceptor {
     // const newHeader = request.clone({
     //   headers: request.headers.set('Authorization', 'newHeaderElem'),
     // });
+    console.log('meow');
 
     const addHeader = request.clone({
       setHeaders: { Authorization: `Basic ${this.base64}` },
@@ -32,7 +33,7 @@ export class ExampleInterceptor implements HttpInterceptor {
       }),
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
-          this.router.navigate(['sign-in']);
+          this.router.navigate(['login']);
         }
         console.log('Interceptor Error: ', error);
         return throwError(error);

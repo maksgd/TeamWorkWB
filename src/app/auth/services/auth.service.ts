@@ -15,7 +15,7 @@ import { HttpClient } from '@angular/common/http';
 export class AuthService {
 
   userData: any;
-  
+
   constructor(
     private http: HttpClient,
     public afs: AngularFirestore, // Inject Firestore service
@@ -28,9 +28,9 @@ export class AuthService {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user')!);
+        console.log(this.userData.getIdToken());
       } else {
-        localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
+        localStorage.removeItem('user');
       }
     });
   }
@@ -41,6 +41,7 @@ export class AuthService {
       .then((result) => {
         this.ngZone.run(() => {
           this.router.navigate(['book']);
+          console.log(this.router.config);
         });
         this.SetUserData(result.user);
       })
@@ -54,6 +55,8 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
         this.SetUserData(result.user);
+        this.router.navigate(['book']);
+
       })
       .catch((error) => {
         window.alert(error.message);
@@ -64,7 +67,7 @@ export class AuthService {
     const user = JSON.parse(localStorage.getItem('user')!);
     return user !== null && user.emailVerified !== false ? true : false;
   }
-  
+
   // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
@@ -88,7 +91,7 @@ export class AuthService {
         window.alert(error);
       });
   }
-  
+
   SetUserData(user: any) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
