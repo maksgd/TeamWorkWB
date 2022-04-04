@@ -36,9 +36,9 @@ import { AuthService } from '../services/auth.service';
 
         <div class="container-btn">
 
-        <button class="btn mr-30" mat-raised-button color="primary" (click)="authService.SignUp(userEmail.value, userPwd.value)" [disabled]="!formAllInfo.valid" >Зарегистрироваться</button>
+        <button class="btn mr-30" mat-raised-button color="primary" (click)="authService.SignUp(userEmail.value, userPwd.value)" [disabled]="!formAllInfo.valid">Зарегистрироваться</button>
 
-        <button class="btn__hasAcc" mat-raised-button color="primary" routerLink="/book">У меня есть аккаунт</button>
+        <button class="btn__hasAcc" mat-raised-button color="primary" routerLink="/login">У меня есть аккаунт</button>
 
         </div>
 

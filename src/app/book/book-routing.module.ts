@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from '../auth/services/auth-guard.service';
 import { BookComponent } from './book.component';
 import { ListFiveComponent } from './list-five/list-five.component';
 import { ListFourComponent } from './list-four/list-four.component';
@@ -10,7 +11,7 @@ import { TableBooksComponent } from './table-books/table-books.component';
 
 export const bookRoutes: Routes = [
   { path: '', 
-    component: BookComponent, 
+    component: BookComponent, canActivate: [AuthGuardService],
     children: [
     { path:'', redirectTo:'1', pathMatch:'full' },
     { path: '1', component: ListOneComponent },

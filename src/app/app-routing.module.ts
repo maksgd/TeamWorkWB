@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', redirectTo:'/auth', pathMatch:'full'},
   { path: 'sign-in', component: SignInComponent, canActivate: [AuthGuardService] },
   { path: 'form', component: FormComponentComponent, canActivate: [AuthGuardService] },
-  { path: 'book', children:[...bookRoutes], canActivate: [AuthGuardService] },
+  { path: 'book', children:[...bookRoutes] },
   { path: 'auth', children:[...authRoutes], canActivate: [AuthGuardService] }
 ];
 

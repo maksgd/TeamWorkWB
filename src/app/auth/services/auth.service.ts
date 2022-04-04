@@ -10,10 +10,9 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   userData: any;
 
   constructor(
@@ -22,7 +21,7 @@ export class AuthService {
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
     public ngZone: NgZone // NgZone service to remove outside scope warning
-    ) {
+  ) {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
@@ -38,12 +37,11 @@ export class AuthService {
   SignIn(email: string, password: string) {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.ngZone.run(() => {
+      .then((res) => {
+        this.SetUserData(res.user);
+        setTimeout(() => {
           this.router.navigate(['book']);
-          console.log(this.router.config);
-        });
-        this.SetUserData(result.user);
+        }, 0);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -55,8 +53,7 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
         this.SetUserData(result.user);
-        this.router.navigate(['book']);
-
+        this.router.navigate(['login']);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -115,8 +112,7 @@ export class AuthService {
     });
   }
 
-
   isAuthenticated(): boolean {
-    return !!this.isLoggedIn
+    return !!this.isLoggedIn;
   }
 }

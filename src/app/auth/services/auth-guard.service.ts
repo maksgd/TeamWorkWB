@@ -27,7 +27,6 @@ export class AuthGuardService implements CanActivate {
 
         temp.multiFactor.user.stsTokenManager.expirationTime+=3600000;
 
-        console.log(temp.multiFactor.user.stsTokenManager);
         return true;
       } else {
         this.router.navigate(['login'])
