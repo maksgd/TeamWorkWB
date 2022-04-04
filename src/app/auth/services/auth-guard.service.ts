@@ -13,13 +13,15 @@ export class AuthGuardService implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (localStorage.getItem('user')) {
-      return true
-    } else {
-      this.router.navigate(['login'])
-      return false;
-    }
-    
+
+      if (localStorage.getItem('user')) {
+        this.authService.refreshTokenIfNeeded();
+
+        return true;
+      } else {
+        this.router.navigate(['login']);
+        return false;
+      }
   }
   
 }
