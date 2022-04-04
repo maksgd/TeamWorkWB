@@ -13,6 +13,11 @@ export class TableBooksService {
 
   urlBook: string = 'http://localhost:4200/api';
 
+  getFullSet(): Observable<any> {
+    return this.http
+      .get(`${this.urlBook}/books.json`);
+  }
+
   // SET 1
   getHttpCarts() {
     const temp = this.http.get<ICartElement[]>(`${this.urlBook}/books.json`, {headers: {"Get": "Set 1"}})
@@ -39,7 +44,7 @@ export class TableBooksService {
   
   getDataBook(): Observable<IDataBook[]> {
     return this.getHttpCarts().pipe(
-      catchError(this.handleError<IDataBook[]>('get SET-2'))
+      catchError(this.handleError<IDataBook[]>('get SET-1'))
     )
   }
 

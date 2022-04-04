@@ -20,7 +20,7 @@ import { ChartComponent } from './chart/chart.component';
 export class ChartBooksComponent implements OnInit {
   constructor(public dialogChart: MatDialog) {}
 
-  openDialog() {
+  openDialog(): void{
     const dialogChartRef = this.dialogChart.open(ChartComponent, {
       disableClose: true,
       width: '600px',
