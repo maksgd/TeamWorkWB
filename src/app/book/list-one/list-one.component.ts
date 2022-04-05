@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
         <div class="fb__img"></div>
         <div class="fb__text">
 
-          <div class="text__header">Main heading</div>
+          <div id="header" class="text__header">Main heading</div>
 
           <div class="text__inner__first">Идейные соображения высшего порядка, а также сложившаяся структура организации позволяет оценить значение новых предложений. Равным образом рамки и место обучения кадров представляет собой интересный эксперимент проверки существенных финансовых и административных условий. </div>
 

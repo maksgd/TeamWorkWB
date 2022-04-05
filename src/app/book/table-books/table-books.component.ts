@@ -124,7 +124,9 @@ export class TableBooksComponent implements OnInit {
       this.books = book;
       this.addStreamBook();
     });
-    
+    // this.tableBooksService.getHttpDataBook().subscribe((book) => {
+    //   console.log(book.length);
+    // })
   }
 
   addStreamBook(): void {

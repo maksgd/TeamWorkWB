@@ -1,17 +1,29 @@
-// import { ChartComponent } from "./chart.component";
-// import { ChartInfoService } from '../chart-info.service';
+import { ChartComponent } from "./chart.component";
+import { ChartInfoService } from '../chart-info.service';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-// describe('Тест диалога компонента', () => {
-//     let classChart: ChartComponent;
-//     const fakeChartInfoService = {getData: () => {}}
+describe('Тест диалога компонента', () => {
+    let component: ChartComponent;
+    let fixture: ComponentFixture<ChartComponent>
 
+    const fakeChartInfoService = {getData: () => {}}
 
-//     beforeEach(() => {
-//         classChart = new ChartComponent(fakeChartInfoService as ChartInfoService);
-//     })
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [ ChartComponent ]
+        })
+        .compileComponents();
+    })
 
-//     it('создание экземпляра класса диалога', () => {
-//         expect(classChart).toBeUndefined();
-//     })
+    beforeEach(() => {
+        fixture = TestBed.createComponent(ChartComponent)
+        component = new ChartComponent(fakeChartInfoService as ChartInfoService);
+        component = fixture.componentInstance;
+        fixture.detectChanges()
+    })
+
+    // it('создание экземпляра класса диалога', () => {
+    //     expect(component).toBeTruthy();
+    // })
     
-// })
+})

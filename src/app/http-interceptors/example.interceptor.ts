@@ -28,7 +28,7 @@ export class ExampleInterceptor implements HttpInterceptor {
 
     return next.handle(addHeader).pipe(
       tap(() => {
-        console.log(addHeader);
+        // console.log(addHeader);
       }),
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
