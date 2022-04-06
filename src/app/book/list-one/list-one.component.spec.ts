@@ -23,9 +23,9 @@ describe('Компонент ListOne', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('заголовок сраницы должен быть "Main heading"'),
+  xit('заголовок сраницы должен быть "Main heading"',
     () => {
       const title = fixture.debugElement.query(By.css('#header'));
       expect(title.nativeElement).toBe("Main heading")
-    };
+    });
 });

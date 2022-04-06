@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from './auth/services/auth.service';
 
+import { AuthService } from './auth/services/auth.service';
+import { HostService } from './host.service';
 
 @Component({
   selector: 'app-root',
@@ -11,17 +11,24 @@ import { AuthService } from './auth/services/auth.service';
 export class AppComponent implements OnInit {
   title = 'Tour of Heroes';
   isPlBetween = true;
-  
+  hostNameApp: string = '';
 
-  constructor(private router: Router, public authService: AuthService) {}
-  
-  hasToken: boolean = this.authService.isAuthenticated()
+  constructor(public host: HostService, public authService: AuthService) {
+    this.hostNameApp = this.host.hostName;
+  }
 
+  // localeList = [
+  //   { code: 'en-US', label: 'English' },
+  //   { code: 'ru', label: 'Русский' }
+  // ]
 
+  hasToken: boolean = this.authService.isAuthenticated();
 
-  ngOnInit() {}
+  logout(): void {
+    this.authService.SignOut();
+  }
 
-  logout() {
-    this.authService.SignOut()
+  ngOnInit(): void {
+    console.log(`Host: ${this.hostNameApp}`);
   }
 }

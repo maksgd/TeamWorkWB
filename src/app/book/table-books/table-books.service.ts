@@ -19,7 +19,9 @@ export class TableBooksService {
 
     return temp.pipe(map((data:any) => {
       return data.set1.data
-    }))
+    }),
+    catchError(this.handleError<ICartElement[]>('httpGet SET-1'))
+    )
   }
   
   getCarts(): Observable<ICartElement[]> {

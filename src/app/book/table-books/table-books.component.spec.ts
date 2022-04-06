@@ -37,6 +37,11 @@ describe('Сервис table-books', () => {
     service.getHttpCarts().subscribe((data) => {
       expect(data).toBeTruthy();
     });
+
+    const req = httpFake.expectOne(service.urlBook + '/books.json');
+    expect(req.request.method).toBe('GET');
+
+    req.flush(req.request.body);
   });
 
   it('должен дать данные книг', () => {
@@ -53,19 +58,32 @@ describe('Сервис table-books', () => {
       expect(data[2].releaseDate).toBe(mockBooksDate.releaseDate2);
       expect(data[3].releaseDate).toBe(mockBooksDate.releaseDate3);
     });
-    
 
     const req = httpFake.expectOne(service.urlBook + '/books.json');
     expect(req.request.method).toBe('GET');
 
-    // req.flush(mockBooksDate); // Данные результата запроса
+    req.flush(mockBooksDate); // Данные результата запроса
   });
 
   it('длинна массива данных из запроса должна равняться 6', () => {
+    console.log('1111111111');
+    const lengthData = 6
+
     service.getHttpDataBook().subscribe((data) => {
-      expect(data.length).toBe(6);
+      expect(data.length).toBe(lengthData);
+
     });
+
+    const req = httpFake.expectOne(service.urlBook + '/books.json');
+    expect(req.request.method).toBe('GET');
+    console.log(req);
+
+    req.flush(req.request.body); // Данные результата запроса jit aot
+    console.log('4444444444444');
+
   });
 
-  // afterEach(() => httpFake.verify()); // Подтверждение выполненного запроса
+  afterEach(() => {
+    httpFake.verify()
+  }); // Подтверждение выполненного запроса
 });

@@ -11,3 +11,8 @@ export interface IDataBook {
 }
 
 export interface IBookElement extends ICartElement, IDataBook {}
+
+export interface IWhole {
+  set1: {data: ICartElement};
+  set2: {data: IDataBook};
+}
